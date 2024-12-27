@@ -1,11 +1,13 @@
 package capitulo10;
 
+import java.util.Date;
+
 public class BasePlusCommissionEmployee extends CommissionEmployee{
 
     private double baseSalary;
 
-    public BasePlusCommissionEmployee(String firstName, String lastName, String socialSecurityNumber, double grossSales, double commissionRate, double baseSalary){
-        super(firstName, lastName, socialSecurityNumber, grossSales, commissionRate);
+    public BasePlusCommissionEmployee(String firstName, String lastName, String socialSecurityNumber, Date birthDate, double grossSales, double commissionRate, double baseSalary){
+        super(firstName, lastName, socialSecurityNumber,birthDate, grossSales, commissionRate);
 
         if(baseSalary < 0.0){
             throw new IllegalArgumentException("Base salary must be >= 0.0");
@@ -23,8 +25,8 @@ public class BasePlusCommissionEmployee extends CommissionEmployee{
     }
 
     @Override
-    public double earnings(){
-        return getBaseSalary() + super.earnings();
+    public double getPaymentAmount(){
+        return getBaseSalary() + super.getPaymentAmount();
     }
 
     @Override

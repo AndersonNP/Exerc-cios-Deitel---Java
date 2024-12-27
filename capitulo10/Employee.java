@@ -1,14 +1,20 @@
 package capitulo10;
 
-public abstract class Employee {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public abstract class Employee implements Payable{
     private final String firstName;
     private final String lastName;
     private final String socialSecurityNumber;
+    private final Date birthDate;
+    private double aditional;
 
-    public Employee(String firstName, String lastName, String socialSecurityNumber){
+    public Employee(String firstName, String lastName, String socialSecurityNumber, Date birthDate){
         this.firstName = firstName;
         this.lastName = lastName;
         this.socialSecurityNumber = socialSecurityNumber;
+        this.birthDate = birthDate;
     }
 
     public String getFirstName(){
@@ -23,10 +29,22 @@ public abstract class Employee {
         return socialSecurityNumber;
     }
 
-    @Override
-    public String toString(){
-        return String.format("%s %s%nsocial secutity number: %s", getFirstName(), getLastName(), getSocialSecurityNumber());
+    public Date getBirthDate(){
+        return birthDate;
     }
 
-    public abstract double earnings();
+    public double getAditional(){
+        return aditional;
+    }
+
+    public void setAditional(double aditional){
+        this.aditional = aditional;
+    }
+
+    @Override
+    public String toString(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return String.format("%s %s%nsocial secutity number: %s%nBirthDate: %s", getFirstName(), getLastName(), getSocialSecurityNumber(),formatter.format(getBirthDate()));
+    }
+
 }
