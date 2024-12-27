@@ -47,4 +47,6 @@ public abstract class Employee implements Payable{
         return String.format("%s %s%nsocial secutity number: %s%nBirthDate: %s", getFirstName(), getLastName(), getSocialSecurityNumber(),formatter.format(getBirthDate()));
     }
 
+    public abstract double earnings();
+
 }
